@@ -1,0 +1,3 @@
+[submodule "rXMLTV"]
+	path = rXMLTV
+	url = https://github.com/jogrue/rXMLTV.git
