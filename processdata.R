@@ -3,7 +3,8 @@
 workingdir <- getwd()
 setwd(workingdir)
 data.dir <- paste0(workingdir,"/data")
-xmltv.se.dir <- paste0(workingdir,"/data/xmltv/xmltv.xmltv.se")
+xmltv.se.dir <- paste0(workingdir,"/raw-data/xmltv.se")
+webgrab.dir <- paste0(workingdir,"/raw-data/webgrab")
 
 # Load packages ----------------------------------------------------------------
 require("devtools")
@@ -100,25 +101,4 @@ xmltvdata.sel <- xmltvdata[xmltvdata$r10.channel %in% channels.to.keep,]
 rm(xmltvdata)
 save(xmltvdata.sel, file = paste0(data.dir,"data_xmltv_se_2016_dach_raw.RData"))
 
-
-# temp1 <- list.files(xmltv.se.dir, pattern = ".*2015.*\\.xml.gz")
-#
-# temp1 <- ReadXmltvFile("F:/3_Projekt_EPG/Examples/webgrab-data-example.xml")
-# temp2 <- ReadXmltvFile("F:/3_Projekt_EPG/Examples/daserste.de_2015-10-13.xml.gz")
-# temp3 <- ReadMultipleXmltvFiles("F:/3_Projekt_EPG/Examples/")
-# xmltv.root <- xmlRoot(xmlTreeParse(file = "F:/3_Projekt_EPG/Examples/webgrab-data-example.xml", useInternal = TRUE))
-# xmltv.programmes <- getNodeSet(xmltv.root,"//programme")
-# xmltv.data <- .ParseProgrammes(xmltv.programmes)
-# temp <- NULL
-# for (i in 1:length(xmltv.programmes)) {
-#   temp <- .ParseProgramme(xmltv.programmes[[i]])
-#   print(i)
-# }
-source("xmltv.R")
-load("./data/data_xmltv_se_2015_all_raw.RData")
-xmltvdata <- .AssignXmltvDataRaw(xmltvdata)
-save(xmltvdata, file = "./data/data_xmltv_se_2015_all_raw_2.RData")
-rm(xmltvdata)
-load("./data/data_xmltv_se_2015_dach_raw.RData")
-xmltvdata.sel <- .AssignXmltvDataRaw(xmltvdata.sel)
-save(xmltvdata.sel, file = "./data/data_xmltv_se_2015_dach_raw_2.RData")
+## Read Webgrab+Plus data for 2016 ---------------------------------------------
